@@ -7,10 +7,23 @@ var MatchGame = {};
 
 /*
   Generates and returns an array of matching card values.
+
  */
 
 MatchGame.generateCardValues = function () {
-
+  var inOrderCardValues = [];
+  var i;
+  for (i = 1; i < 9; i++) {
+    inOrderCardValues.push(i, i);
+  }
+  var randomCardValues = [];
+  while (inOrderCardValues.length > 0) {
+    var randomIndex = Math.floor(Math.random() * inOrderCardValues.length);
+    var randomNum = inOrderCardValues[randomIndex];
+    randomCardValues.push(randomNum);
+    inOrderCardValues.splice(randomIndex, 1);
+  }
+  return randomCardValues;
 };
 
 /*
