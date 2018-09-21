@@ -1,8 +1,21 @@
+// BUGS
+
 /*
 There is a bug on mobile where when you click on the card the
 numbers get selected (selector cursor for text?). fix.
 */
 
+// FEATURES
+
+/*
+1. When the user wins, animate a screen coming forward
+with the text "You are a mothaerfucking mathematical
+genius!!" if within time, or if they took long ridicule
+them and add also a song (playback), when its the genius
+text, perhaps brahms "space oddysey"
+*/
+
+// CODE
 
 /*
   Sets up a new game after HTML document has loaded.
