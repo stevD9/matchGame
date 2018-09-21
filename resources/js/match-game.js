@@ -12,8 +12,8 @@ numbers get selected (selector cursor for text?). fix.
 with the text "You are a mothaerfucking mathematical
 genius!!" if within time, or if they took long ridicule
 them and add also a song (playback).
-2. when two unflipped cards remain, play brahms
-zaratustra.
+--DONE-- 2. when two unflipped cards remain, play brahms
+zaratustra. --DONE --
 */
 
 // CODE
@@ -57,6 +57,9 @@ MatchGame.generateCardValues = function () {
 
 MatchGame.renderCards = function(cardValues, $game) {
   $game.data('flippedCards', []);
+  // array for storing flipped correct cards
+  $game.data('cardsLeft', []);
+
   var cardColors = ['hsl(23,85%,65%)', 'hsl(55,85%,65%)', 'hsl(90,85%,65%)',
   'hsl(160,85%,65%)', 'hsl(220,85%,65%)', 'hsl(265,85%,65%)', 'hsl(310,85%,65%)', 'hsl(360,85%,65%)'];
   $game.empty();
@@ -83,6 +86,8 @@ MatchGame.flipCard = function($card, $game) {
   if ($card.data('flipped') == true) {
     return;
   }
+    // zarathustra audio
+    var nearlyThere = new Audio('Also-Sprach-Zarathustra.mp3')
 
     $card.css({'background-color': $card.data('color'), 'font-size': '7rem', 'font-weight': 900, 'color': 'rgb(255, 255, 255)'});
     $card.text($card.data('value'));
@@ -94,6 +99,8 @@ MatchGame.flipCard = function($card, $game) {
       for (var i = 0; i < $game.data('flippedCards').length; i++) {
         $game.data('flippedCards')[i].css('background-color', 'rgb(153,153,153)');
         $game.data('flippedCards')[i].css('color', 'rgb(204,204,204)');
+        // store cards left
+        $game.data('cardsLeft').push($game.data('flippedCards')[i]);
       }
     } else {
       var card1 = $game.data('flippedCards')[0];
@@ -108,5 +115,9 @@ MatchGame.flipCard = function($card, $game) {
       }, 350);
     }
     $game.data('flippedCards').splice(0,2);
+  }
+  // if statement to play zarathustra
+  if ($game.data('flippedCards').length == 1 && $game.data('cardsLeft').length >= 14) {
+    nearlyThere.play();
   }
 };
