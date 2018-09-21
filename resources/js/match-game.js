@@ -1,3 +1,8 @@
+/*
+There is a bug on mobile where when you click on the card the
+numbers get selected (selector cursor for text?). fix.
+*/
+
 
 /*
   Sets up a new game after HTML document has loaded.
