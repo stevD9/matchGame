@@ -11,8 +11,9 @@ numbers get selected (selector cursor for text?). fix.
 1. When the user wins, animate a screen coming forward
 with the text "You are a mothaerfucking mathematical
 genius!!" if within time, or if they took long ridicule
-them and add also a song (playback), when its the genius
-text, perhaps brahms "space oddysey"
+them and add also a song (playback).
+2. when two unflipped cards remain, play brahms
+zaratustra.
 */
 
 // CODE
