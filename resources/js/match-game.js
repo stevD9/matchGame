@@ -59,6 +59,8 @@ MatchGame.renderCards = function(cardValues, $game) {
   $game.data('flippedCards', []);
   // array for storing flipped correct cards
   $game.data('cardsLeft', []);
+  // array for triggering Zarathustra
+  $game.data('trigger', []);
 
   var cardColors = ['hsl(23,85%,65%)', 'hsl(55,85%,65%)', 'hsl(90,85%,65%)',
   'hsl(160,85%,65%)', 'hsl(220,85%,65%)', 'hsl(265,85%,65%)', 'hsl(310,85%,65%)', 'hsl(360,85%,65%)'];
@@ -116,8 +118,12 @@ MatchGame.flipCard = function($card, $game) {
     }
     $game.data('flippedCards').splice(0,2);
   }
+  // if statement to determine state of trigger array
+  if ($game.data('flippedCards').length == 1 && $game.data('cardsLeft').length == 12) {
+    $game.data('trigger').push($game.data('flippedCards')[0]);
+  }
   // if statement to play zarathustra
-  if ($game.data('flippedCards').length == 1 && $game.data('cardsLeft').length >= 14) {
+  if ($game.data('trigger').length == 1 && $game.data('flippedCards').length == 1) {
     nearlyThere.play();
   }
 };
