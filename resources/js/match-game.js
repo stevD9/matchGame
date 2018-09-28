@@ -89,7 +89,7 @@ MatchGame.flipCard = function($card, $game) {
     return;
   }
     // zarathustra audio
-    var nearlyThere = new Audio('Also-Sprach-Zarathustra.mp3')
+    var nearlyThere = new Audio('./resources/audio/AlsoSprachZarathustra.mp3');
 
     $card.css({'background-color': $card.data('color'), 'font-size': '7rem', 'font-weight': 900, 'color': 'rgb(255, 255, 255)'});
     $card.text($card.data('value'));
@@ -126,4 +126,12 @@ MatchGame.flipCard = function($card, $game) {
   if ($game.data('trigger').length == 1 && $game.data('flippedCards').length == 1) {
     nearlyThere.play();
   }
+
+
+  // how to stop zarathustra when all cards are flipped
+  // www.stackoverflow.com/questions/14834520/html5-audio-stop-function
+  // if ($game.data('cardsLeft').length == 16) {
+  //   nearlyThere.pause();
+  //   nearlyThere.currentTime = 0;
+  // }
 };
