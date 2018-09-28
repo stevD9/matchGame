@@ -77,7 +77,17 @@ MatchGame.renderCards = function(cardValues, $game) {
   });
 };
 
+// create zarathustra audio element and play
+// pause functions
 
+var nearlyThere = document.createElement("audio");
+nearlyThere.setAttribute('src', './resources/audio/AlsoSprachZarathustra.mp3');
+function playZara() {
+  nearlyThere.play();
+}
+function pauseZara() {
+  nearlyThere.pause();
+}
 
 /*
   Flips over a given card and checks to see if two cards are flipped over.
@@ -88,8 +98,6 @@ MatchGame.flipCard = function($card, $game) {
   if ($card.data('flipped') == true) {
     return;
   }
-    // zarathustra audio
-    var nearlyThere = new Audio('./resources/audio/AlsoSprachZarathustra.mp3');
 
     $card.css({'background-color': $card.data('color'), 'font-size': '7rem', 'font-weight': 900, 'color': 'rgb(255, 255, 255)'});
     $card.text($card.data('value'));
@@ -118,20 +126,22 @@ MatchGame.flipCard = function($card, $game) {
     }
     $game.data('flippedCards').splice(0,2);
   }
+
   // if statement to determine state of trigger array
+
   if ($game.data('flippedCards').length == 1 && $game.data('cardsLeft').length == 12) {
     $game.data('trigger').push($game.data('flippedCards')[0]);
   }
+
   // if statement to play zarathustra
+
   if ($game.data('trigger').length == 1 && $game.data('flippedCards').length == 1) {
-    nearlyThere.play();
+    playZara();
   }
 
+  // if statement to stop zarathustra 
 
-  // how to stop zarathustra when all cards are flipped
-  // www.stackoverflow.com/questions/14834520/html5-audio-stop-function
-  // if ($game.data('cardsLeft').length == 16) {
-  //   nearlyThere.pause();
-  //   nearlyThere.currentTime = 0;
-  // }
+  if ($game.data('cardsLeft').length == 16) {
+    pauseZara();
+  }
 };
